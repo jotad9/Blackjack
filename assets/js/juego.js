@@ -17,47 +17,19 @@
 
     //Llamo a la clase Alertas
     const alertas=new Alertas();
+    //Llamo a la clase Baraja
+    const baraja=new Baraja();
+    //Creo el deck
+    deck=baraja.crearDeck(types,specials);
     
-    const crearDeck = () => {
-        for (let i = 2; i <= 10; i++) {
-            for (let type of types) {
-                deck.push(i + type);
-            }
-        }
-        for (let type of types) {
-            for (let special of specials) {
-                deck.push(special + type);
-            }
-        }
-        deck = _.shuffle(deck);
-        return deck;
-    }
-    crearDeck();
-    
-    //Esta función sirve para pedir una carta
-    const pedirCarta=()=>{
-        //si ya no quedan cartas en el deck salta un error
-        if(deck.length===0){
-            throw 'No hay cartas en el deck';
-        }
-        //Se elimina la última carta del deck para pasarla a la mesa
-        return deck.pop(); 
-    }
-    
-    const valorCarta = (carta) => {
-        const valor=carta.substring(0,carta.length-1);
-        
-    
-        return ( isNaN(valor) ) ? ((valor==='A') ? 11 : 10) : ( valor * 1 );
-    
-    }
+    deck=baraja.pedirCarta();
     
     //Events
     btnPedir.addEventListener('click',function(){
-        const carta=pedirCarta();
-        puntosJugador+=valorCarta(carta);
+        const carta=baraja.pedirCarta();
+        puntosJugador+=baraja.valorCarta(carta);
         puntosHTML[0].innerText=puntosJugador;
-        creacionDeImagenCartas(carta,cartasPlayer);
+        baraja.creacionDeImagenCartas(carta,cartasPlayer);
     
     
         if(puntosJugador>21){
@@ -73,10 +45,10 @@
     });
     const turnoComputer=(puntosMinimos)=>{
         do{
-            const carta=pedirCarta();
-            puntosComputer+=valorCarta(carta);
+            const carta=baraja.pedirCarta();
+            puntosComputer+=baraja.valorCarta(carta);
             puntosHTML[1].innerText=puntosComputer;
-            creacionDeImagenCartas(carta,cartasComputer);
+            baraja.creacionDeImagenCartas(carta,cartasComputer);
             if(puntosMinimos>21){
                 break;
             }
@@ -107,12 +79,7 @@
         
     });
 
-    const creacionDeImagenCartas=(carta,tipoCarta)=>{
-        const imgCarta=document.createElement('img');
-        imgCarta.src=`assets/cartas/${carta}.png`;
-        imgCarta.classList.add('carta');
-        tipoCarta.append(imgCarta);
-    }
+    
 
     const final=(puntosMinimos)=>{
         if(puntosComputer>puntosMinimos && puntosComputer<=21){
