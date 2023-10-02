@@ -56,4 +56,17 @@ class Alertas{
             }
         })
     }
+    resultado(puntosMinimos,puntosComputer){
+        if(puntosComputer>puntosMinimos && puntosComputer<=21){
+            this.derrota();
+        }else if(puntosMinimos>puntosComputer && puntosMinimos<=21){
+            this.victoria();
+        }else if(puntosMinimos>21){
+            this.derrota();
+        }else if(puntosComputer===puntosMinimos){
+            this.empate();
+        }else if(puntosComputer>21){
+            this.victoria();
+        }
+    }
 }

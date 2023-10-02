@@ -54,7 +54,7 @@
             }
         }while((puntosComputer<puntosMinimos) && (puntosMinimos<=21));
     
-        final(puntosMinimos);
+        alertas.resultado(puntosMinimos,puntosComputer);
     }
     btnNuevo.addEventListener('click',()=>{
         alertas.nuevoJuego();
@@ -79,19 +79,4 @@
         
     });
 
-    
-
-    const final=(puntosMinimos)=>{
-        if(puntosComputer>puntosMinimos && puntosComputer<=21){
-            alertas.derrota();
-        }else if(puntosMinimos>puntosComputer && puntosMinimos<=21){
-            alertas.victoria();
-        }else if(puntosMinimos>21){
-            alertas.derrota();
-        }else if(puntosComputer===puntosMinimos){
-            alertas.empate();
-        }else if(puntosComputer>21){
-            alertas.victoria();
-        }
-    }
 })();
