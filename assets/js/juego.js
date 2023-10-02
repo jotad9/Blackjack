@@ -4,8 +4,9 @@
     let deck = [];
     let types = ['C', 'D', 'H', 'S'];
     let specials = ['A', 'J', 'Q', 'K'];
-    let puntosJugador = 0,
-        puntosComputer=0;
+    //let puntosJugador = 0,
+      //  puntosComputer=0;
+    let puntosJugadores=[];
     
     //References of HTML
     const btnPedir = document.querySelector('#btnPedir');
@@ -19,42 +20,53 @@
     const alertas=new Alertas();
     //Llamo a la clase Baraja
     const baraja=new Baraja();
-    //Creo el deck
-    deck=baraja.crearDeck(types,specials);
-    
+
+    const inizializarJuego=(numJugadores=2)=>{
+        deck=baraja.crearDeck(types,specials);
+        for(let i=0;i<numJugadores;i++){
+            puntosJugadores.push(0);
+        }
+    }
+    inizializarJuego(); 
     deck=baraja.pedirCarta();
+
+    
     
     //Events
     btnPedir.addEventListener('click',function(){
         const carta=baraja.pedirCarta();
-        puntosJugador+=baraja.valorCarta(carta);
-        puntosHTML[0].innerText=puntosJugador;
+        acumularPuntos(carta,0);
         baraja.creacionDeImagenCartas(carta,cartasPlayer);
     
     
-        if(puntosJugador>21){
+        if(puntosJugadores[0]>21){
     
             btnPedir.disabled=true;
             btnDetener.disabled=true;
-            turnoComputer(puntosJugador);
+            turnoComputer(puntosJugadores[0]);
             
         }
-        if(puntosJugador===21){
+        if(puntosJugadores[0]===21){
             alertas.victoria();
         }
     });
-    const turnoComputer=(puntosMinimos)=>{
+
+    const acumularPuntos=(carta,turno)=>{
+        puntosJugadores[turno]+=baraja.valorCarta(carta);
+        puntosHTML[turno].innerText=puntosJugadores[turno];
+        return puntosJugadores[turno];
+    }
+    const turnoComputer=()=>{
         do{
             const carta=baraja.pedirCarta();
-            puntosComputer+=baraja.valorCarta(carta);
-            puntosHTML[1].innerText=puntosComputer;
+            acumularPuntos(carta,1);
             baraja.creacionDeImagenCartas(carta,cartasComputer);
-            if(puntosMinimos>21){
+            if(puntosJugadores[0]>21){
                 break;
             }
-        }while((puntosComputer<puntosMinimos) && (puntosMinimos<=21));
+        }while((puntosJugadores[1]<puntosJugadores[0]) && (puntosJugadores[0]<=21));
     
-        alertas.resultado(puntosMinimos,puntosComputer);
+        alertas.resultado(puntosJugadores[0],puntosJugadores[1]);
     }
     btnNuevo.addEventListener('click',()=>{
         alertas.nuevoJuego();
@@ -73,7 +85,7 @@
             if (result.isConfirmed) {
                 btnPedir.disabled=true;
                 btnDetener.disabled=true;
-                turnoComputer(puntosJugador);
+                turnoComputer();
             }
         })
         
