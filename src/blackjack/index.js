@@ -1,5 +1,5 @@
-import { Alertas } from '../../../BlackJackVite/src/blackjack/Alertas.js';
-import { creacionDeImagenCartas, crearDeck, pedirCarta, valorCarta } from '../../../BlackJackVite/src/blackjack/usecases/index.js';
+import { Alertas } from './Alertas.js';
+import { creacionDeImagenCartas, crearDeck, pedirCarta, valorCarta } from './usecases/index.js';
     let deck = [];
     let types = ['C', 'D', 'H', 'S'];
     let specials = ['A', 'J', 'Q', 'K'];
