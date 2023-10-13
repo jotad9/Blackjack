@@ -1,0 +1,32 @@
+
+html, body{
+  margin: 0px;
+  background-color: rgb(12, 159, 15);
+  color:white;
+
+
+}
+.titulo{
+  background-color: black;
+  color: white;
+  padding: 20px;
+  font-size: 25px;
+}
+
+.carta{
+  position: relative;
+  width: 14%;
+  left: 5%;
+  margin-left: -4%;
+}
+
+#computer-cartas, #player-cartas{
+  height: 90%;
+}
+#title{
+  margin-right: 90%;
+}
+.icono{
+  color: white;
+  text-decoration: none;
+}

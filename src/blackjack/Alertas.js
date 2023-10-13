@@ -1,4 +1,4 @@
-class Alertas{
+export class Alertas{
     victoria(){
         Swal.fire({
             title: 'Has ganado!!',
@@ -69,4 +69,22 @@ class Alertas{
             this.victoria();
         }
     }
+    cambiarNombreJugador(namePlayer){
+        Swal.fire({
+            title: 'Escribe tu nombre',
+            input: 'text',
+            inputPlaceholder: 'Escribe tu nombre',
+            allowOutsideClick: false,
+            inputValidator: (value) => {
+                if (!value) {
+                    return 'Necesitas escribir tu nombre!'
+                }
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                namePlayer.innerHTML = `${result.value} ` ;
+            }
+        })
+    }
+
 }

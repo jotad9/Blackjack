@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--bootstrap-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link  type="text/css" rel="stylesheet" href="assets/css/styles.css">
-
-
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="style.css">
     <title>BlackJack</title>
 </head>
-<body>
 
-    <header class="titulo">Blackjack</header>
+<body>
+    <header class="titulo">
+        <nav>
+            <div class="container-fluid">
+                <a class="navbar-brand" id="title">BlackJack</a>
+                <a href="https://www.linkedin.com/in/juan-daniel-oter-de-la-hoz-3b97a421b/" target="_blank"  class="icono"><i class="bi bi-linkedin"></i></a>
+                <a href="https://github.com/jotad9/Blackjack" target="_blank" class="icono"><i class="bi bi-github"></i></a>
+            </div>
+        </nav>
+    </header>
     <div class="row mt-2">
         <div class="col text-center">
             <button id="btnNuevo" class="btn btn-primary">Nuevo Juego</button>
             <button id="btnPedir" class="btn btn-primary">Pedir Carta</button>
             <button id="btnDetener" class="btn btn-danger">Detener</button>
-            
+
         </div>
     </div>
 
     <div class="row container">
         <div class="col">
-            <h1>Jugador - <small>0</small></h1>
+            <h1><span id="nombre-jugador">Jugador</span> - <small>0</small></h1>
             <div id="player-cartas">
-            <!-- <img class="carta" src="assets/cartas/2C.png" > --> 
             </div>
         </div>
     </div>
     <div class="row container mt-2">
         <div class="col">
-            <h1>Computer  - <small>0</small></h1>
+            <h1>Computer - <small>0</small></h1>
             <div id="computer-cartas">
-                <!-- <img class="carta" src="assets/cartas/2C.png" > --> 
             </div>
         </div>
     </div>
-    <script src="assets/js/Baraja.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="assets/js/Alertas.js"></script>
-    <script src="assets/js/underscore.js"></script>
-    <script src="assets/js/juego.js"></script>
+    <script type="module" src="main.js"></script>
 </body>
+
 </html>
