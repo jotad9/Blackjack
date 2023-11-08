@@ -13,4 +13,6 @@ metí en node en vez de archivos.
 La próxima actualización de proyecto que tengo pensado
 es crear un crud con nombre y derrota o victoria del jugador
 
+![image](https://github.com/jotad9/Blackjack/assets/94204605/f189df11-ad62-48a1-889c-88f4ba93454c)
+
 
